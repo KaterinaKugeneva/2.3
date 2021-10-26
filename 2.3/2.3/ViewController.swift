@@ -28,17 +28,10 @@ class ViewController: UIViewController {
     
     
     @IBAction func pressButton() {
-        guard let inputName = textUsername.text, !inputName.isEmpty else {
+      
+        if  textUsername.text  != "User" || textPassword.text != "Password" {
             showAlert(tittle: "Error", message: "Wrong username or password")
-            return}
-        guard let inputPaswd = textPassword.text, !inputPaswd.isEmpty else {
-            showAlert(tittle: "Error", message: "Wrong username or password")
-            return}
-        
-        if  String(inputName) == "User" && String(inputPaswd) == "Password" {
-            
-         print("Ok")
-        } else {showAlert(tittle: "Error", message: "Wrong username or password")}
+        }
         }
     }
     
