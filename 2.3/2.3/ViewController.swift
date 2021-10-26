@@ -27,13 +27,15 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func pressButton() {
-      
+    @IBAction func pressedButton() {
         if  textUsername.text  != "User" || textPassword.text != "Password" {
             showAlert(tittle: "Error", message: "Wrong username or password")
+        } else{
+            self.performSegue(withIdentifier: "segueFromAtoB", sender: self)
         }
         }
     }
+ 
     
 
 
@@ -47,9 +49,8 @@ extension ViewController {
         present (alert , animated: true )
         
     }
-    
- 
 }
+
 
        
     
