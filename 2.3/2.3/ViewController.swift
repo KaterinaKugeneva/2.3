@@ -7,16 +7,35 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    @IBOutlet weak var textUsername: UITextField!
-    @IBOutlet weak var textPassword: UITextField!
-    @IBOutlet weak var logInButton: UIButton!
+class ViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet var textUsername: UITextField!
+    @IBOutlet var textPassword: UITextField!
+    @IBOutlet var logInButton: UIButton!
+    private var password: String = "Password"
+    private var username: String = "User"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        textUsername.delegate = self
+        textPassword.delegate = self
+        textUsername.returnKeyType = .next
+        textPassword.returnKeyType = .done
+        textPassword.enablesReturnKeyAutomatically = true
     }
-
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           if textField == textUsername {
+               textPassword.becomeFirstResponder()
+           }
+           if textField == textPassword {
+               textPassword.resignFirstResponder()
+           }
+           return true
+       }
+       
+       override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+           super.touchesBegan(touches, with: event)
+           view.endEditing(true)
+       }
   
     @IBAction func forgotLogin() {
         showAlert(tittle: "Note", message: "Your username is User")
@@ -28,15 +47,33 @@ class ViewController: UIViewController {
     
     
     @IBAction func pressedButton() {
-        if  textUsername.text  != "User" || textPassword.text != "Password" {
+        if  textUsername.text  != username || textPassword.text != password {
             showAlert(tittle: "Error", message: "Wrong username or password")
         } else{
             self.performSegue(withIdentifier: "segueFromAtoB", sender: self)
         }
         }
+    /*@IBAction func unwind(for segue: UIStoryboardSegue) {
+        textUsername.text = ""
+        textPassword.text = ""
+        
+    }*/
+    @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
+        textUsername.text = ""
+        textPassword.text = ""
+            
+        }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
+        welcomeVC.welcomeTextIn = "Welcome, \(textUsername.text ?? "")!"
+      
+    }
+    
+    
     }
  
-    
+
 
 
 extension ViewController {

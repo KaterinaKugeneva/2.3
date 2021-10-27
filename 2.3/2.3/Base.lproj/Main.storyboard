@@ -106,7 +106,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                 <connections>
-                                    <action selector="backAction:" destination="3ZM-em-jNz" eventType="touchUpInside" id="sn5-lr-rXh"/>
+                                    <segue destination="Iq8-UW-dvf" kind="unwind" unwindAction="unwindToThisViewWithSender:" id="ctU-ML-Pnc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -128,6 +128,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bj6-M8-oAX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Iq8-UW-dvf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="709.23076923076917" y="82.464454976303315"/>
         </scene>

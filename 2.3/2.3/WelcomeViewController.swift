@@ -9,17 +9,16 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
 
-    @IBOutlet weak var welcomeText: UILabel!
+    @IBOutlet var welcomeText: UILabel!
+    var welcomeTextIn: String! = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        welcomeText.text = "Welcome, "
+        welcomeText.text = welcomeTextIn
 
         
     }
     
-    @IBAction func backAction(_ sender: Any) {
-        dismiss(animated: true)
-    }
+  
     
     
 
