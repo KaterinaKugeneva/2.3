@@ -8,18 +8,17 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-
+    @IBOutlet weak var imageUser: UIImageView!
     @IBOutlet var welcomeText: UILabel!
-    var welcomeTextIn: String! = ""
+    var welcomeTextIn: String!
+    var imageUserIn: String!
     override func viewDidLoad() {
         super.viewDidLoad()
-        welcomeText.text = welcomeTextIn
+        welcomeText.text = "Welcome, \(welcomeTextIn ?? "")!"
+        imageUser.image = UIImage(named: imageUserIn)
 
         
     }
     
-  
     
-    
-
 }
